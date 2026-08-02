@@ -1,0 +1,25 @@
+{
+  "name": "online-library-ct449",
+  "version": "1.0.0",
+  "description": "``` npm init  ```",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wutdahack1337/online-library-CT449.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wutdahack1337/online-library-CT449/issues"
+  },
+  "homepage": "https://github.com/wutdahack1337/online-library-CT449#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.1"
+  }
+}
