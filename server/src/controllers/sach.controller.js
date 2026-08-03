@@ -38,7 +38,7 @@ export const createSach = asyncHandler(async (req, res) => {
 });
 
 export const updateSach = asyncHandler(async (req, res) => {
-  const sach = await Sach.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' });
+  const sach = await Sach.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after', runValidators: true });
   if (!sach) { const e = new Error('Không tìm thấy sách'); e.status = 404; throw e; }
   getIO().to('books').emit('book:updated', { maSach: sach.maSach, soQuyen: sach.soQuyen, active: sach.active });
   res.json(sach);
