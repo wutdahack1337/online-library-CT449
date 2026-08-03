@@ -12,4 +12,5 @@ await NhanVien.create({
   chucVu: 'Thủ thư'
 });
 console.log('Seed xong');
+await mongoose.disconnect();
 process.exit(0);
