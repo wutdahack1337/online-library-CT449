@@ -15,5 +15,5 @@ export async function login(req, res) {
   if (!match) return res.status(401).json({ message: 'Sai mã nhân viên hoặc mật khẩu' });
 
   const token = jwt.sign({ id: nv._id, maNhanVien: nv.maNhanVien }, process.env.JWT_SECRET, { expiresIn: '8h' });
-  res.json({ token, hoTen: nv.hoTen, chucVu: nv.chucVu });
+  res.json({ token, hoTen: nv.hoTen, chucVu: nv.chucVu, maNhanVien: nv.maNhanVien });
 }
