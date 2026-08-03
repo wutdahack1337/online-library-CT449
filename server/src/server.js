@@ -30,7 +30,7 @@ async function start(){
     await connectDB();
     await testTransactionSuport();
     httpServer.listen(process.env.PORT || 5000, () =>
-        console.log(`Server dang chay o port ${process.env.PORT | 5000}`)
+        console.log(`Server dang chay o port ${process.env.PORT || 5000}`)
     );
 }
 

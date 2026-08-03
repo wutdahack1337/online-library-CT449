@@ -11,4 +11,10 @@ docker compose up -d
 docker exec -it mongo-quanlymuonsach mongosh --eval "rs.initiate()"
 
 npm run dev
+
+docker exec -it mongo-quanlymuonsach mongosh
+
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"maNhanVien":"NV001","password":"123456"}'
 ```

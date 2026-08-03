@@ -2,7 +2,7 @@
   "name": "online-library-ct449",
   "version": "1.0.0",
   "description": "``` npm init  ```",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
