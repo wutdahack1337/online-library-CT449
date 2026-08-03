@@ -43,7 +43,7 @@ async function seed() {
     { maSach: 'S005', tenSach: 'Sách Giáo Khoa Toán 12', donGia: 30000, soQuyen: 10, namXuatBan: 2023, tacGia: 'Bộ GD&ĐT', maNXB: nxbs[2]._id }
   ]);
 
-  // 4. Docgia
+  // 4. DocGia
   const docgias = await DocGia.insertMany([
     { maDocGia: 'DG001', hoTen: 'Lê Văn Minh', ngaySinh: new Date('2000-05-10'), phai: 'Nam', diaChi: 'Q5, TP.HCM', dienThoai: '0911111111' },
     { maDocGia: 'DG002', hoTen: 'Phạm Thị Hoa', ngaySinh: new Date('2001-08-20'), phai: 'Nữ', diaChi: 'Q10, TP.HCM', dienThoai: '0922222222' }
@@ -59,7 +59,7 @@ async function seed() {
   console.log(`- ${nhanViens.length} NhanVien (đăng nhập: maNhanVien=NV001, password=123456)`);
   console.log(`- ${nxbs.length} NhaXuatBan`);
   console.log(`- ${sachs.length} Sach (S003 còn 1 quyển, S004 hết sách — dùng test race condition & hết sách)`);
-  console.log(`- ${docgias.length} Docgia`);
+  console.log(`- ${docgias.length} DocGia`);
   console.log('- 2 TheoDoiMuonSach (1 đang mượn, 1 đã trả)');
 
   process.exit(0);
