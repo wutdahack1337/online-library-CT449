@@ -12,13 +12,13 @@ export const createDocGia = asyncHandler(async (req, res) => {
 });
 
 export const updateDocGia = asyncHandler(async (req, res) => {
-  const dg = await DocGia.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  const dg = await DocGia.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' });
   if (!dg) { const e = new Error('Không tìm thấy độc giả'); e.status = 404; throw e; }
   res.json(dg);
 });
 
 export const setActiveDocGia = asyncHandler(async (req, res) => {
-  const dg = await DocGia.findByIdAndUpdate(req.params.id, { active: req.body.active }, { new: true });
+  const dg = await DocGia.findByIdAndUpdate(req.params.id, { active: req.body.active }, { returnDocument: 'after' });
   if (!dg) { const e = new Error('Không tìm thấy độc giả'); e.status = 404; throw e; }
   res.json(dg);
 });

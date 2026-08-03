@@ -11,13 +11,13 @@ export const createNXB = asyncHandler(async (req, res) => {
 });
 
 export const updateNXB = asyncHandler(async (req, res) => {
-  const nxb = await NhaXuatBan.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  const nxb = await NhaXuatBan.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' });
   if (!nxb) { const e = new Error('Không tìm thấy NXB'); e.status = 404; throw e; }
   res.json(nxb);
 });
 
 export const setActiveNXB = asyncHandler(async (req, res) => {
-  const nxb = await NhaXuatBan.findByIdAndUpdate(req.params.id, { active: req.body.active }, { new: true });
+  const nxb = await NhaXuatBan.findByIdAndUpdate(req.params.id, { active: req.body.active }, { returnDocument: 'after' });
   if (!nxb) { const e = new Error('Không tìm thấy NXB'); e.status = 404; throw e; }
   res.json(nxb);
 });

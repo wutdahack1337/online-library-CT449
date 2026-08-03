@@ -38,7 +38,7 @@ export const createSach = asyncHandler(async (req, res) => {
 });
 
 export const updateSach = asyncHandler(async (req, res) => {
-  const sach = await Sach.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  const sach = await Sach.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' });
   if (!sach) { const e = new Error('Không tìm thấy sách'); e.status = 404; throw e; }
   getIO().to('books').emit('book:updated', { maSach: sach.maSach, soQuyen: sach.soQuyen, active: sach.active });
   res.json(sach);
@@ -46,7 +46,7 @@ export const updateSach = asyncHandler(async (req, res) => {
 
 export const setActiveSach = asyncHandler(async (req, res) => {
   const { active } = req.body; // true | false
-  const sach = await Sach.findByIdAndUpdate(req.params.id, { active }, { new: true });
+  const sach = await Sach.findByIdAndUpdate(req.params.id, { active }, { returnDocument: 'after' });
   if (!sach) { const e = new Error('Không tìm thấy sách'); e.status = 404; throw e; }
   getIO().to('books').emit('book:updated', { maSach: sach.maSach, soQuyen: sach.soQuyen, active: sach.active });
   res.json(sach);
