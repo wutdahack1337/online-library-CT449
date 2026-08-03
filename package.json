@@ -2,7 +2,7 @@
   "name": "online-library-ct449",
   "version": "1.0.0",
   "description": "``` npm init  ```",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +18,12 @@
   },
   "homepage": "https://github.com/wutdahack1337/online-library-CT449#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongoose": "^9.9.1"
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.1",
+    "socket.io": "^4.8.3"
   }
 }
