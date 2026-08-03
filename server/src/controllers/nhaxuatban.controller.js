@@ -2,7 +2,8 @@ import  NhaXuatBan  from '../models/NhaXuatBan.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 
 export const getAllNXB = asyncHandler(async (req, res) => {
-  res.json(await NhaXuatBan.find({ active: true }));
+  const filter = req.query.all === 'true' ? {} : { active: true };
+  res.json(await NhaXuatBan.find(filter));
 });
 
 export const createNXB = asyncHandler(async (req, res) => {

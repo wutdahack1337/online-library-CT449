@@ -4,12 +4,13 @@ import  Sach  from '../models/Sach.js';
 import  NhaXuatBan  from '../models/NhaXuatBan.js';
 
 export const getAllSach = asyncHandler(async (req, res) => {
-    const list = await Sach.find({ active: true }).populate('maNXB', 'tenNXB');
-    res.json(list);
+  const filter = req.query.all === 'true' ? {} : { active: true };
+  const list = await Sach.find(filter).populate('maNXB', 'tenNhaXuatBan');
+  res.json(list);
 });
 
 export const getOneSach = asyncHandler(async (req, res) => {
-    const sach = await Sach.findById(req.params.id).populate('maNXB', 'tenNXB');
+    const sach = await Sach.findById(req.params.id).populate('maNXB', 'tenNhaXuatBan');
     if (!sach) { const e = new Error('Không tìm thấy sách'); e.status = 404; throw e; }
     res.json(sach);
 });
@@ -23,7 +24,7 @@ export const searchSach = asyncHandler(async (req, res) => {
     { $match: { $or: [
       { tenSach: { $regex: q, $options: 'i' } },
       { tacGia: { $regex: q, $options: 'i' } },
-      { 'nxb.tenNXB': { $regex: q, $options: 'i' } }
+      { 'nxb.tenNhaXuatBan': { $regex: q, $options: 'i' } }
     ]}}
   ]);
   res.json(result);
