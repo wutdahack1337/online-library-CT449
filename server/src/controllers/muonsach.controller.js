@@ -26,7 +26,8 @@ export const muonSach = asyncHandler(async (req, res) => {
     const soDangMuon = await TheoDoiMuonSach.countDocuments({
       maDocGia: docgia._id, ngayTra: null
     }).session(session);
-    if (soDangMuon >= process.env.MAX_BOOKS_TO_BORROW) throw new Error('Đã đạt giới hạn ' + process.env.MAX_BOOKS_TO_BORROW + ' quyển đang mượn');
+    const maxBooks = Number(process.env.MAX_BOOKS_TO_BORROW) || 5;
+    if (soDangMuon >= maxBooks) throw new Error('Đã đạt giới hạn ' + maxBooks + ' quyển đang mượn');
 
     const sach = await Sach.findOneAndUpdate(
       { _id: maSach, soQuyen: { $gt: 0 }, active: true },
