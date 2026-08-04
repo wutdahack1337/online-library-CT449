@@ -8,7 +8,7 @@ import { getIO } from '../sockets/io.js';
 export const getAllMuonSach = asyncHandler(async (req, res) => {
   const list = await TheoDoiMuonSach.find()
     .populate('maDocGia', 'hoTen dienThoai')
-    .populate('maSach', 'tenSach maSach')
+    .populate('maSach', 'tenSach')
     .sort({ ngayMuon: -1 });
   res.json(list);
 });
@@ -41,7 +41,7 @@ export const muonSach = asyncHandler(async (req, res) => {
     ))[0];
 
     await session.commitTransaction();
-    getIO().to('books').emit('book:updated', { maSach: sach.maSach, soQuyen: sach.soQuyen, active: sach.active });
+    getIO().to('books').emit('book:updated', { id: sach._id, soQuyen: sach.soQuyen, active: sach.active });
     res.status(201).json(record);
   } catch (err) {
     await session.abortTransaction();
@@ -68,7 +68,7 @@ export const traSach = asyncHandler(async (req, res) => {
     );
 
     await session.commitTransaction();
-    getIO().to('books').emit('book:updated', { maSach: sach.maSach, soQuyen: sach.soQuyen, active: sach.active });
+    getIO().to('books').emit('book:updated', { id: sach._id, soQuyen: sach.soQuyen, active: sach.active });
     res.json(record);
   } catch (err) {
     await session.abortTransaction();

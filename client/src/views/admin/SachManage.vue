@@ -4,7 +4,7 @@ import http from '../../api/http';
 
 const list = ref([]);
 const nxbs = ref([]);
-const form = ref({ maSach: '', tenSach: '', donGia: 0, soQuyen: 0, namXuatBan: '', tacGia: '', maNXB: '' });
+const form = ref({ tenSach: '', donGia: '', soQuyen: '', namXuatBan: '', tacGia: '', maNXB: '' });
 const editingId = ref(null);
 
 async function fetchAll() {
@@ -26,14 +26,14 @@ async function submit() {
 function editSach(sach) {
   editingId.value = sach._id;
   form.value = {
-    maSach: sach.maSach, tenSach: sach.tenSach, donGia: sach.donGia,
+    tenSach: sach.tenSach, donGia: sach.donGia,
     soQuyen: sach.soQuyen, namXuatBan: sach.namXuatBan, tacGia: sach.tacGia,
     maNXB: sach.maNXB?._id || sach.maNXB
   };
 }
 function resetForm() {
   editingId.value = null;
-  form.value = { maSach: '', tenSach: '', donGia: 0, soQuyen: 0, namXuatBan: '', tacGia: '', maNXB: '' };
+  form.value = { tenSach: '', donGia: '', soQuyen: '', namXuatBan: '', tacGia: '', maNXB: '' };
 }
 async function toggleActive(sach) {
   await http.patch(`/sach/${sach._id}/active`, { active: !sach.active });
@@ -46,7 +46,6 @@ async function toggleActive(sach) {
     <div class="bg-white p-4 rounded shadow">
       <h3 class="font-semibold mb-3">{{ editingId ? 'Sửa sách' : 'Thêm sách mới' }}</h3>
       <form @submit.prevent="submit" class="space-y-2">
-        <input v-model="form.maSach" placeholder="Mã sách" required class="border rounded px-3 py-2 w-full" />
         <input v-model="form.tenSach" placeholder="Tên sách" required class="border rounded px-3 py-2 w-full" />
         <input v-model.number="form.donGia" type="number" min="0" placeholder="Đơn giá" required class="border rounded px-3 py-2 w-full" />
         <input v-model.number="form.soQuyen" type="number" min="0" placeholder="Số quyển" required class="border rounded px-3 py-2 w-full" />
