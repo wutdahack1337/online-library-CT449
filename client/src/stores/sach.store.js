@@ -15,8 +15,8 @@ export const useSachStore = defineStore('sach', { // source of truth cho websock
     initSocket(socket) {
       if (this.socketInited) return;
       this.socketInited = true;
-      socket.on('book:updated', ({ maSach, soQuyen, active }) => {
-        const b = this.danhSachSach.find((s) => s.maSach === maSach);
+      socket.on('book:updated', ({ id, soQuyen, active }) => {
+        const b = this.danhSachSach.find((s) => s._id === id);
         if (b) { b.soQuyen = soQuyen; b.active = active; }
       });
     }

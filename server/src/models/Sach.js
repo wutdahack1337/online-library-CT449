@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
 const SachSchema = new Schema({
-    maSach: {type: String, required: true, unique: true},
     tenSach: {type: String, required: true},
     donGia: {type: Number, required: true, min: 0},
     soQuyen: {type: Number, required: true, min: 0},

@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue';
 import http from '../../api/http';
 
 const list = ref([]);
-const form = ref({ maNhaXuatBan: '', tenNhaXuatBan: '', diaChi: '' });
+const form = ref({ tenNhaXuatBan: '', diaChi: '' });
 const editingId = ref(null);
 
 async function fetchAll() {
@@ -18,11 +18,11 @@ async function submit() {
 }
 function edit(n) {
   editingId.value = n._id;
-  form.value = { maNhaXuatBan: n.maNhaXuatBan, tenNhaXuatBan: n.tenNhaXuatBan, diaChi: n.diaChi };
+  form.value = { tenNhaXuatBan: n.tenNhaXuatBan, diaChi: n.diaChi };
 }
 function resetForm() {
   editingId.value = null;
-  form.value = { maNhaXuatBan: '', tenNhaXuatBan: '', diaChi: '' };
+  form.value = { tenNhaXuatBan: '', diaChi: '' };
 }
 async function toggleActive(n) {
   await http.patch(`/nhaxuatban/${n._id}/active`, { active: !n.active });
@@ -35,7 +35,6 @@ async function toggleActive(n) {
     <div class="bg-white p-4 rounded shadow">
       <h3 class="font-semibold mb-3">{{ editingId ? 'Sửa NXB' : 'Thêm NXB' }}</h3>
       <form @submit.prevent="submit" class="space-y-2">
-        <input v-model="form.maNhaXuatBan" placeholder="Mã NXB" required class="border rounded px-3 py-2 w-full" />
         <input v-model="form.tenNhaXuatBan" placeholder="Tên NXB" required class="border rounded px-3 py-2 w-full" />
         <input v-model="form.diaChi" placeholder="Địa chỉ" class="border rounded px-3 py-2 w-full" />
         <div class="flex gap-2">

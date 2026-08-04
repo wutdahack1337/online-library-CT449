@@ -29,18 +29,18 @@ async function seed() {
 
   // 2. NhaXuatBan
   const nxbs = await NhaXuatBan.insertMany([
-    { maNhaXuatBan: 'NXB001', tenNhaXuatBan: 'NXB Trẻ', diaChi: '161B Lý Chính Thắng, Q3, TP.HCM' },
-    { maNhaXuatBan: 'NXB002', tenNhaXuatBan: 'NXB Kim Đồng', diaChi: '55 Quang Trung, Hà Nội' },
-    { maNhaXuatBan: 'NXB003', tenNhaXuatBan: 'NXB Giáo Dục', diaChi: '81 Trần Hưng Đạo, Hà Nội' }
+    { tenNhaXuatBan: 'NXB Trẻ', diaChi: '161B Lý Chính Thắng, Q3, TP.HCM' },
+    { tenNhaXuatBan: 'NXB Kim Đồng', diaChi: '55 Quang Trung, Hà Nội' },
+    { tenNhaXuatBan: 'NXB Giáo Dục', diaChi: '81 Trần Hưng Đạo, Hà Nội' }
   ]);
 
   // 3. Sach — tham chiếu _id thật của NXB vừa tạo, không hardcode
   const sachs = await Sach.insertMany([
-    { maSach: 'S001', tenSach: 'Dế Mèn Phiêu Lưu Ký', donGia: 45000, soQuyen: 5, namXuatBan: 2020, tacGia: 'Tô Hoài', maNXB: nxbs[1]._id },
-    { maSach: 'S002', tenSach: 'Số Đỏ', donGia: 60000, soQuyen: 3, namXuatBan: 2019, tacGia: 'Vũ Trọng Phụng', maNXB: nxbs[0]._id },
-    { maSach: 'S003', tenSach: 'Toán Cao Cấp A1', donGia: 85000, soQuyen: 1, namXuatBan: 2021, tacGia: 'Nguyễn Đình Trí', maNXB: nxbs[2]._id },
-    { maSach: 'S004', tenSach: 'Lập Trình Web Với Node.js', donGia: 120000, soQuyen: 0, namXuatBan: 2022, tacGia: 'Trần Văn A', maNXB: nxbs[0]._id }, // hết sách, test case "hết"
-    { maSach: 'S005', tenSach: 'Sách Giáo Khoa Toán 12', donGia: 30000, soQuyen: 10, namXuatBan: 2023, tacGia: 'Bộ GD&ĐT', maNXB: nxbs[2]._id }
+    { tenSach: 'Dế Mèn Phiêu Lưu Ký', donGia: 45000, soQuyen: 5, namXuatBan: 2020, tacGia: 'Tô Hoài', maNXB: nxbs[1]._id },
+    { tenSach: 'Số Đỏ', donGia: 60000, soQuyen: 3, namXuatBan: 2019, tacGia: 'Vũ Trọng Phụng', maNXB: nxbs[0]._id },
+    { tenSach: 'Toán Cao Cấp A1', donGia: 85000, soQuyen: 1, namXuatBan: 2021, tacGia: 'Nguyễn Đình Trí', maNXB: nxbs[2]._id },
+    { tenSach: 'Lập Trình Web Với Node.js', donGia: 120000, soQuyen: 0, namXuatBan: 2022, tacGia: 'Trần Văn A', maNXB: nxbs[0]._id }, // hết sách, test case "hết"
+    { tenSach: 'Sách Giáo Khoa Toán 12', donGia: 30000, soQuyen: 10, namXuatBan: 2023, tacGia: 'Bộ GD&ĐT', maNXB: nxbs[2]._id }
   ]);
 
   // 4. DocGia
