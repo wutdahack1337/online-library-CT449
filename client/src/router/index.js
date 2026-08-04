@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth.store';
 import HomeView from '../views/HomeView.vue';
 import BorrowView from '../views/BorrowView.vue';
+import AboutView from '../views/AboutView.vue';
 import LoginView from '../views/LoginView.vue';
 import SachManage from '../views/admin/SachManage.vue';
 import DocGiaManage from '../views/admin/DocGiaManage.vue';
@@ -11,6 +12,7 @@ import MuonSachManage from '../views/admin/MuonSachManage.vue';
 const routes = [
   { path: '/', component: HomeView },
   { path: '/muon-sach', component: BorrowView },
+  { path: '/gioi-thieu', component: AboutView },
   { path: '/login', component: LoginView },
   { path: '/admin/sach', component: SachManage, meta: { requiresAuth: true } },
   { path: '/admin/docgia', component: DocGiaManage, meta: { requiresAuth: true } },
