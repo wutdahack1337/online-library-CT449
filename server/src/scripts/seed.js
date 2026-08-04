@@ -36,11 +36,11 @@ async function seed() {
 
   // 3. Sach — tham chiếu _id thật của NXB vừa tạo, không hardcode
   const sachs = await Sach.insertMany([
-    { tenSach: 'Dế Mèn Phiêu Lưu Ký', donGia: 45000, soQuyen: 5, namXuatBan: 2020, tacGia: 'Tô Hoài', maNXB: nxbs[1]._id },
-    { tenSach: 'Số Đỏ', donGia: 60000, soQuyen: 3, namXuatBan: 2019, tacGia: 'Vũ Trọng Phụng', maNXB: nxbs[0]._id },
-    { tenSach: 'Toán Cao Cấp A1', donGia: 85000, soQuyen: 1, namXuatBan: 2021, tacGia: 'Nguyễn Đình Trí', maNXB: nxbs[2]._id },
-    { tenSach: 'Lập Trình Web Với Node.js', donGia: 120000, soQuyen: 0, namXuatBan: 2022, tacGia: 'Trần Văn A', maNXB: nxbs[0]._id }, // hết sách, test case "hết"
-    { tenSach: 'Sách Giáo Khoa Toán 12', donGia: 30000, soQuyen: 10, namXuatBan: 2023, tacGia: 'Bộ GD&ĐT', maNXB: nxbs[2]._id }
+    { tenSach: 'Dế Mèn Phiêu Lưu Ký', donGia: 45000, soQuyen: 5, namXuatBan: 2020, tacGia: 'Tô Hoài', maNXB: nxbs[1]._id, moTa: 'Hành trình phiêu lưu của chú dế Mèn qua thế giới loài vật, gửi gắm bài học về tính khiêm tốn và lòng dũng cảm. Tác phẩm thiếu nhi kinh điển của văn học Việt Nam.' },
+    { tenSach: 'Số Đỏ', donGia: 60000, soQuyen: 3, namXuatBan: 2019, tacGia: 'Vũ Trọng Phụng', maNXB: nxbs[0]._id, moTa: 'Tiểu thuyết trào phúng kể về Xuân Tóc Đỏ, từ kẻ hạ lưu bước lên đỉnh cao xã hội nhờ may mắn và sự lố lăng của xã hội thượng lưu thời Pháp thuộc.' },
+    { tenSach: 'Toán Cao Cấp A1', donGia: 85000, soQuyen: 1, namXuatBan: 2021, tacGia: 'Nguyễn Đình Trí', maNXB: nxbs[2]._id, moTa: 'Giáo trình toán cao cấp dành cho sinh viên năm nhất khối ngành kỹ thuật, gồm giới hạn, đạo hàm, tích phân và chuỗi số.' },
+    { tenSach: 'Lập Trình Web Với Node.js', donGia: 120000, soQuyen: 0, namXuatBan: 2022, tacGia: 'Trần Văn A', maNXB: nxbs[0]._id, moTa: 'Hướng dẫn xây dựng ứng dụng web full-stack với Node.js, Express và MongoDB, từ cơ bản đến triển khai thực tế.' }, // hết sách, test case "hết"
+    { tenSach: 'Sách Giáo Khoa Toán 12', donGia: 30000, soQuyen: 10, namXuatBan: 2023, tacGia: 'Bộ GD&ĐT', maNXB: nxbs[2]._id, moTa: 'Sách giáo khoa Toán lớp 12 chương trình chuẩn của Bộ Giáo dục và Đào tạo, bao gồm giải tích và hình học không gian.' }
   ]);
 
   // 4. DocGia

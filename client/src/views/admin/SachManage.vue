@@ -4,7 +4,7 @@ import http from '../../api/http';
 
 const list = ref([]);
 const nxbs = ref([]);
-const form = ref({ tenSach: '', donGia: '', soQuyen: '', namXuatBan: '', tacGia: '', maNXB: '' });
+const form = ref({ tenSach: '', donGia: '', soQuyen: '', namXuatBan: '', tacGia: '', moTa: '', maNXB: '' });
 const editingId = ref(null);
 
 async function fetchAll() {
@@ -28,12 +28,13 @@ function editSach(sach) {
   form.value = {
     tenSach: sach.tenSach, donGia: sach.donGia,
     soQuyen: sach.soQuyen, namXuatBan: sach.namXuatBan, tacGia: sach.tacGia,
+    moTa: sach.moTa || '',
     maNXB: sach.maNXB?._id || sach.maNXB
   };
 }
 function resetForm() {
   editingId.value = null;
-  form.value = { tenSach: '', donGia: '', soQuyen: '', namXuatBan: '', tacGia: '', maNXB: '' };
+  form.value = { tenSach: '', donGia: '', soQuyen: '', namXuatBan: '', tacGia: '', moTa: '', maNXB: '' };
 }
 async function toggleActive(sach) {
   await http.patch(`/sach/${sach._id}/active`, { active: !sach.active });
@@ -51,6 +52,7 @@ async function toggleActive(sach) {
         <input v-model.number="form.soQuyen" type="number" min="0" placeholder="Số quyển" required class="border rounded px-3 py-2 w-full" />
         <input v-model.number="form.namXuatBan" type="number" placeholder="Năm xuất bản" class="border rounded px-3 py-2 w-full" />
         <input v-model="form.tacGia" placeholder="Tác giả" class="border rounded px-3 py-2 w-full" />
+        <textarea v-model="form.moTa" placeholder="Tóm tắt sách" rows="3" class="border rounded px-3 py-2 w-full"></textarea>
         <select v-model="form.maNXB" required class="border rounded px-3 py-2 w-full">
           <option value="" disabled>-- Chọn NXB --</option>
           <option v-for="n in nxbs" :key="n._id" :value="n._id">{{ n.tenNhaXuatBan }}</option>
