@@ -6,6 +6,7 @@ const SachSchema = new Schema({
     soQuyen: {type: Number, required: true, min: 0},
     namXuatBan: Number,
     tacGia: String,
+    moTa: {type: String, default: ""},
     maNXB: {type: Schema.Types.ObjectId, ref: "NhaXuatBan", required: true},
     active: {type: Boolean, default: true},
 });

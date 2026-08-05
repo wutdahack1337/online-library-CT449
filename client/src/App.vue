@@ -12,8 +12,8 @@ onMounted(() => sachStore.initSocket(useSocket()));
 
 <template>
   <div class="min-h-screen bg-gray-50 flex flex-col">
-    <nav class="bg-white shadow px-6 py-4 flex justify-between items-center">
-      <div class="flex gap-4 text-sm">
+    <nav class="bg-white/90 backdrop-blur border-b border-gray-100 px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+      <div class="flex gap-5 text-sm">
         <RouterLink to="/" class="font-semibold text-gray-800">Trang chủ</RouterLink>
         <RouterLink to="/muon-sach" class="text-gray-600">Mượn sách</RouterLink>
         <RouterLink to="/gioi-thieu" class="text-gray-600">Giới thiệu</RouterLink>
@@ -27,11 +27,11 @@ onMounted(() => sachStore.initSocket(useSocket()));
       <div class="text-sm">
         <span v-if="auth.token" class="text-gray-500 mr-3">{{ auth.hoTen }}</span>
         <button v-if="auth.token" @click="auth.logout" class="text-red-500">Đăng xuất</button>
-        <RouterLink v-else to="/login" class="text-blue-500">Đăng nhập</RouterLink>
+        <RouterLink v-else to="/login" class="text-blue-500 font-medium">Đăng nhập</RouterLink>
       </div>
     </nav>
-    <main class="p-6 flex-1"><RouterView /></main>
-    <footer class="bg-white border-t">
+    <main class="p-6 flex-1 max-w-6xl w-full mx-auto"><RouterView /></main>
+    <footer class="bg-white border-t border-gray-100">
       <div class="max-w-5xl mx-auto px-6 py-6 text-sm text-gray-500 flex flex-col sm:flex-row justify-between gap-2">
         <div>© 2026 Trần Quang Minh B2304069</div>
         <div class="flex flex-col sm:items-end gap-1">
